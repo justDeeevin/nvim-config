@@ -1,3 +1,4 @@
+return { 'williamboman/mason.nvim', dependencies = {{'williamboman/mason-lspconfig.nvim', 'neovim/nvim-lspconfig', 'ray-x/lsp_signature.nvim'}}, config = function()
 require("mason").setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -127,3 +128,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
         })
     end,
 })
+end
+}

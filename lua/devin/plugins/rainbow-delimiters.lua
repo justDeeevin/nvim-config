@@ -1,4 +1,4 @@
--- This module contains a number of default definitions
+return {'hiphish/rainbow-delimiters.nvim', config = function()
 local rainbow_delimiters = require 'rainbow-delimiters'
 
 vim.g.rainbow_delimiters = {
@@ -13,4 +13,6 @@ vim.g.rainbow_delimiters = {
     highlight = {
         'RainbowDelimiterViolet',
     },
+}
+end
 }
