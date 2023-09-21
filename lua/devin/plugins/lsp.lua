@@ -1,138 +1,122 @@
 return {
-    -- LSP Configuration & Plugins
-    "neovim/nvim-lspconfig",
-    dependencies = {
-        -- Automatically install LSPs to stdpath for neovim
-        -- Setup should be called first for mason and after for mason-lspconfig!
-        { "williamboman/mason.nvim" },
-        "williamboman/mason-lspconfig.nvim",
+	-- LSP Configuration & Plugins
+	"neovim/nvim-lspconfig",
+	dependencies = {
+		-- Automatically install LSPs to stdpath for neovim
+		-- Setup should be called first for mason and after for mason-lspconfig!
+		{ "williamboman/mason.nvim" },
+		"williamboman/mason-lspconfig.nvim",
 
-        -- Additional lua configuration, makes nvim stuff amazing!
-        "folke/neodev.nvim",
-        "ray-x/lsp_signature.nvim",
-    },
+		-- Additional lua configuration, makes nvim stuff amazing!
+		"folke/neodev.nvim",
+		"ray-x/lsp_signature.nvim",
+	},
 
-    config = function()
-        -- [[ Configure LSP ]]
+	config = function()
+		-- [[ Configure LSP ]]
 
-        -- Very important
-        -- Load Mason first
-        require("mason").setup()
+		-- Very important
+		-- Load Mason first
+		require("mason").setup()
 
-        -- Setup neovim lua configuration
-        require("neodev").setup()
+		-- Setup neovim lua configuration
+		require("neodev").setup()
 
-        -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+		-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-        -- Should be loaded after mason
-        -- Ensure the servers above are installed
-        local mason_lspconfig = require("mason-lspconfig")
+		-- Should be loaded after mason
+		-- Ensure the servers above are installed
+		local mason_lspconfig = require("mason-lspconfig")
 
-        mason_lspconfig.setup()
+		mason_lspconfig.setup()
 
-        -- Use this to avoid setting up servers you don't want
-        local ignored_servers = {
-            "tsserver",
-        }
+		-- Use this to avoid setting up servers you don't want
+		local ignored_servers = {}
 
-        mason_lspconfig.setup_handlers({
-            function(server_name)
-                if vim.tbl_contains(ignored_servers, server_name) then
-                    return
-                end
-                require("lspconfig")[server_name].setup({
-                    capabilities = capabilities,
-                })
-                if server_name == "rust_analyzer" then
-                    require("lspconfig").rust_analyzer.setup({
-                        settings = {
-                            ["rust-analyzer"] = {
-                                checkOnSave = {
-                                    command = "clippy",
-                                },
-                            },
-                        },
-                    })
-                end
-            end,
-            ["tsserver"] = function()
-                local ts_tools_s, ts_tools = pcall(require, "typescript-tools")
-                if ts_tools_s then
-                    ts_tools.setup({
-                        settings = {
-                            expose_as_code_action = {
-                                "fix_all",
-                                "add_missing_imports",
-                                "remove_unused",
-                            },
-                        },
-                    })
-                else
-                    print("typescript-tools not installed, skipping and using default tsserver")
-                    require("lspconfig")["tsserver"].setup({
-                        capabilities = capabilities,
-                    })
-                end
-            end,
-            ["jdtls"] = function()
-                local jdtls_s, _ = pcall(require, "jdtls")
-                if jdtls_s then
-                    vim.api.nvim_create_autocmd("FileType", {
-                        pattern = { "java" },
-                        callback = function()
-                            require("jdtls").start_or_attach({
-                                cmd = {
-                                    "jdtls",
-                                    "--jvm-arg=" .. string.format(
-                                        "-javaagent:%s",
-                                        vim.fn.expand("$MASON/share/jdtls/lombok.jar")
-                                    ),
-                                },
-                                root_dir = vim.fs.dirname(
-                                    vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]
-                                ),
-                            })
-                        end,
-                    })
-                else
-                    require("lspconfig")["jdtls"].setup({
-                        capabilities = capabilities,
-                    })
-                end
-            end,
-        })
+		mason_lspconfig.setup_handlers({
+			function(server_name)
+				if vim.tbl_contains(ignored_servers, server_name) then
+					return
+				end
+				require("lspconfig")[server_name].setup({
+					capabilities = capabilities,
+				})
+				if server_name == "rust_analyzer" then
+					require("lspconfig").rust_analyzer.setup({
+						settings = {
+							["rust-analyzer"] = {
+								checkOnSave = {
+									command = "clippy",
+								},
+								inlayHints = {
+									chainingHints = true,
+									parameterHints = true,
+									typeHints = true,
+								},
+							},
+						},
+					})
+				end
+			end,
+			["jdtls"] = function()
+				local jdtls_s, _ = pcall(require, "jdtls")
+				if jdtls_s then
+					vim.api.nvim_create_autocmd("FileType", {
+						pattern = { "java" },
+						callback = function()
+							require("jdtls").start_or_attach({
+								cmd = {
+									"jdtls",
+									"--jvm-arg=" .. string.format(
+										"-javaagent:%s",
+										vim.fn.expand("$MASON/share/jdtls/lombok.jar")
+									),
+								},
+								root_dir = vim.fs.dirname(
+									vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]
+								),
+							})
+						end,
+					})
+				else
+					require("lspconfig")["jdtls"].setup({
+						capabilities = capabilities,
+					})
+				end
+			end,
+		})
 
-        -- Diagnostic message setup
-        vim.diagnostic.config({
-            -- Keep virtual text simple to avoid clutter
-            virtual_text = {
-                signs = true,
-                severity_sort = true,
-            },
-            -- Use a custom format for the message in line diagnostics (E)
-            float = {
-                signs = true,
-                severity_sort = true,
-                format = function(diagnostic)
-                    return string.format("%s [%s] (%s)", diagnostic.message, diagnostic.code, diagnostic.source)
-                end,
-                suffix = "",
-            },
-        })
+		-- Diagnostic message setup
+		vim.diagnostic.config({
+			-- Keep virtual text simple to avoid clutter
+			virtual_text = {
+				signs = true,
+				severity_sort = true,
+			},
+			-- Use a custom format for the message in line diagnostics (E)
+			float = {
+				signs = true,
+				severity_sort = true,
+				format = function(diagnostic)
+					return string.format("%s [%s] (%s)", diagnostic.message, diagnostic.code, diagnostic.source)
+				end,
+				suffix = "",
+			},
+		})
 
-        -- Signature help
-        require("lsp_signature").setup({
-            bind = true,
-            hint_enable = false,
-            handler_opts = {
-                border = "rounded",
-            },
-        })
+		-- Signature help
+		require("lsp_signature").setup({
+			bind = true,
+			hint_enable = false,
+			handler_opts = {
+				border = "rounded",
+			},
+		})
 
-        vim.keymap.set("n", "<leader>v", function()
-            vim.diagnostic.open_float(0, { scope = "line" })
-        end)
-    end,
+		vim.keymap.set("n", "<leader>v", function()
+			vim.diagnostic.open_float(0, { scope = "line" })
+		end)
+	end,
 }
