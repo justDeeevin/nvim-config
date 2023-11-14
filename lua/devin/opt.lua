@@ -1,4 +1,11 @@
-vim.opt.shell = '/bin/bash'
+local os_name = os.getenv("OS")
+local home_env_name
+if os_name == "Windows_NT" then
+	home_env_name = "HOMEPATH"
+else
+	home_env_name = "HOME"
+	vim.opt.shell = "/bin/bash"
+end
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -10,7 +17,7 @@ vim.opt.expandtab = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv(home_env_name) .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
