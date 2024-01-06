@@ -109,14 +109,14 @@ return {
 		-- Signature help
 		require("lsp_signature").setup({
 			bind = true,
-			hint_enable = false,
+			hint_enable = true,
 			handler_opts = {
 				border = "rounded",
 			},
 		})
 
 		vim.keymap.set("n", "<leader>v", function()
-			vim.diagnostic.open_float(0, { scope = "line" })
+			vim.diagnostic.open_float({ scope = "line" })
 		end)
 	end,
 }
