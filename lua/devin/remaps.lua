@@ -22,9 +22,3 @@ end)
 vim.keymap.set("n", "gd", function()
 	vim.lsp.buf.definition()
 end)
-
-if vim.lsp.inlay_hint then
-	vim.keymap.set("n", "<C-h>", function()
-		vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled(0))
-	end)
-end

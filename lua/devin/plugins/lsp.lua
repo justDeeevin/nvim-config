@@ -118,5 +118,17 @@ return {
 		vim.keymap.set("n", "<leader>v", function()
 			vim.diagnostic.open_float({ scope = "line" })
 		end)
+
+		vim.api.nvim_create_autocmd("LspAttach", {
+			callback = function(args)
+				local client = vim.lsp.get_client_by_id(args.data.client_id)
+				---@diagnostic disable-next-line: need-check-nil
+				if client.server_capabilities.inlayHintProvider then
+					vim.keymap.set("n", "<C-h>", function()
+						vim.lsp.inlay_hint.enable(0, vim.lsp.inlay_hint.is_enabled(0))
+					end)
+				end
+			end,
+		})
 	end,
 }
