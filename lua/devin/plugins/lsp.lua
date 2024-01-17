@@ -55,6 +55,9 @@ return {
 									parameterHints = true,
 									typeHints = true,
 								},
+								check = {
+									allTargets = false,
+								},
 							},
 						},
 					})
