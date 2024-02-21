@@ -251,7 +251,8 @@ return {
 
 			sections = {
 				lualine_b = { "branch" },
-				lualine_c = { "diff", runtime_spec_component },
+				lualine_c = { "filename" },
+				lualine_d = { "diff", runtime_spec_component },
 				lualine_x = {
 					"diagnostics",
 					attached_clients_component,
