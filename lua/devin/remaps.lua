@@ -1,10 +1,10 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("i", "kj", "<Esc>")
+vim.keymap.set("i", "en", "<Esc>")
 
 -- Move selected lines
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "E", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "N", ":m '<-2<CR>gv=gv")
 
 -- Keep search results in the center of the screen
 vim.keymap.set("n", "n", "nzzzv")
