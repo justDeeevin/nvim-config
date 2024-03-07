@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
 if os.getenv("COLEMAK") == "1" then
-	vim.keymap.set("i", "en", "<Esc>")
+	vim.keymap.set("i", "en", "<Esc>", { desc = "Exit insert mode" })
 	vim.keymap.set("n", "s", "<Cmd>startinsert<CR>")
 	vim.keymap.set({ "n", "o", "x" }, "n", "<Down>")
 	vim.keymap.set({ "n", "o", "x" }, "e", "<Up>")
@@ -22,17 +22,8 @@ else
 	vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 end
 
-vim.keymap.set("n", "<C-a>", function()
-	vim.lsp.buf.code_action()
-end)
-vim.keymap.set("n", "gh", function()
-	vim.lsp.buf.hover()
-end)
 vim.keymap.set("n", "<F2>", function()
 	vim.lsp.buf.rename()
-end)
-vim.keymap.set("n", "gd", function()
-	vim.lsp.buf.definition()
 end)
 
 vim.keymap.set("n", "<C-h>", function()

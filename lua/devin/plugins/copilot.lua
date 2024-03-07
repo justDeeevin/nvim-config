@@ -12,8 +12,7 @@ return {
 				auto_trigger = true,
 				debounce = 75,
 				keymap = {
-					-- Handled in /plugins/cmp.lua!
-					accept = false,
+					accept = "<Tab>",
 					accept_word = false,
 					accept_line = false,
 					next = "<M-]>",
