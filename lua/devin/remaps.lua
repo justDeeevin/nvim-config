@@ -26,8 +26,3 @@ vim.keymap.set("n", "<F2>", function()
 	vim.lsp.buf.rename()
 end)
 
-vim.keymap.set("n", "<C-h>", function()
-	pcall(function()
-		vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
-	end)
-end)

@@ -88,6 +88,14 @@ return {
 						callback = vim.lsp.buf.clear_references,
 					})
 				end
+				if client and client.server_capabilities.inlayHintProvider then
+				    vim.lsp.inlay_hint.enable(event.buf, true)
+                                    vim.keymap.set("n", "<C-h>", function()
+                                    	pcall(function()
+                                    		vim.lsp.inlay_hint.enable(event.buf, not vim.lsp.inlay_hint.is_enabled())
+                                    	end)
+                                    end)
+				end
 			end,
 		})
 
