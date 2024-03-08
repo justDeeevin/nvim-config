@@ -16,7 +16,7 @@ if os.getenv("COLEMAK") == "1" then
 	vim.keymap.set("v", "N", ":m '>+1<CR>gv=gv")
 	vim.keymap.set("v", "E", ":m '<-2<CR>gv=gv")
 else
-	vim.keymap.set("i", "jk", "<Esc>")
+	vim.keymap.set("i", "kj", "<Esc>")
 	-- Move selected lines
 	vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 	vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -25,4 +25,3 @@ end
 vim.keymap.set("n", "<F2>", function()
 	vim.lsp.buf.rename()
 end)
-
