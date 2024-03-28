@@ -8,7 +8,7 @@ return {
 		},
 		formatters_by_ft = {
 			lua = { "stylua" },
-		python = { "black" },
+			python = { "black" },
 			javascript = { "prettierd" },
 			typescript = { "prettierd" },
 			json = { "prettierd" },
@@ -19,6 +19,7 @@ return {
 			rust = { "rustfmt" },
 			toml = { "taplo" },
 			svelte = { "prettierd" },
+			nix = { "alejandra" },
 		},
 	},
 }
