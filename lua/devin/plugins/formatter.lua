@@ -20,6 +20,8 @@ return {
 			toml = { "taplo" },
 			svelte = { "prettierd" },
 			nix = { "alejandra" },
+			scss = { "prettierd" },
+			sh = { "beautysh" },
 		},
 	},
 }
