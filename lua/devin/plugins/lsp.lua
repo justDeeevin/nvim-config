@@ -89,12 +89,12 @@ return {
 					})
 				end
 				if client and client.server_capabilities.inlayHintProvider then
-				    vim.lsp.inlay_hint.enable(event.buf, true)
-                                    vim.keymap.set("n", "<C-h>", function()
-                                    	pcall(function()
-                                    		vim.lsp.inlay_hint.enable(event.buf, not vim.lsp.inlay_hint.is_enabled())
-                                    	end)
-                                    end)
+					vim.lsp.inlay_hint.enable(true)
+					vim.keymap.set("n", "<C-h>", function()
+						pcall(function()
+							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+						end)
+					end)
 				end
 			end,
 		})
@@ -172,33 +172,32 @@ return {
 				},
 			},
 			tsserver = {
-				  settings = {
-                                          javascript = {
-                                            inlayHints = {
-                                              includeInlayEnumMemberValueHints = true,
-                                              includeInlayFunctionLikeReturnTypeHints = true,
-                                              includeInlayFunctionParameterTypeHints = true,
-                                              includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-                                              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                                              includeInlayPropertyDeclarationTypeHints = true,
-                                              includeInlayVariableTypeHints = false,
-                                            },
-                                          },
+				settings = {
+					javascript = {
+						inlayHints = {
+							includeInlayEnumMemberValueHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayVariableTypeHints = false,
+						},
+					},
 
-                                          typescript = {
-                                            inlayHints = {
-                                              includeInlayEnumMemberValueHints = true,
-                                              includeInlayFunctionLikeReturnTypeHints = true,
-                                              includeInlayFunctionParameterTypeHints = true,
-                                              includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-                                              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                                              includeInlayPropertyDeclarationTypeHints = true,
-                                              includeInlayVariableTypeHints = false,
-                                            },
-                                          },
-				  }
-
-			}
+					typescript = {
+						inlayHints = {
+							includeInlayEnumMemberValueHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayVariableTypeHints = false,
+						},
+					},
+				},
+			},
 		}
 
 		-- Ensure the servers and tools above are installed
