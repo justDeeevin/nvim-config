@@ -19,7 +19,7 @@ return {
 			rust = { "rustfmt" },
 			toml = { "taplo" },
 			svelte = { "prettierd" },
-			nix = { "alejandra" },
+			nix = { "nixpkgs_fmt" },
 			scss = { "prettierd" },
 			sh = { "beautysh" },
 		},
