@@ -18,21 +18,21 @@ local spinners = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
 -- This stands for web development buffer selections i swear
 local web_dev_bs = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
 
-local function copilot_indicator()
-	local client = vim.lsp.get_active_clients({ name = "copilot" })[1]
-	if client == nil then
-		return ""
-	end
-
-	if vim.tbl_isempty(client.requests) then
-		return ""
-	end
-
-	local ms = vim.loop.hrtime() / 1000000
-	local frame = math.floor(ms / 120) % #spinners
-
-	return spinners[frame + 1]
-end
+-- local function copilot_indicator()
+-- 	local client = vim.lsp.get_active_clients({ name = "copilot" })[1]
+-- 	if client == nil then
+-- 		return ""
+-- 	end
+--
+-- 	if vim.tbl_isempty(client.requests) then
+-- 		return ""
+-- 	end
+--
+-- 	local ms = vim.loop.hrtime() / 1000000
+-- 	local frame = math.floor(ms / 120) % #spinners
+--
+-- 	return spinners[frame + 1]
+-- end
 
 -- The LSP+copilot_active stuff is excerpt from Lunarvim
 local function get_attached_clients()
@@ -198,13 +198,13 @@ return {
 	"nvim-lualine/lualine.nvim",
 	event = { "VimEnter", "BufReadPost", "BufNewFile" },
 	config = function()
-		local copilot_component = {
-			copilot_indicator,
-			color = {
-				fg = "#6CC644",
-				bg = "#1E1E1E",
-			},
-		}
+		-- local copilot_component = {
+		-- 	copilot_indicator,
+		-- 	color = {
+		-- 		fg = "#6CC644",
+		-- 		bg = "#1E1E1E",
+		-- 	},
+		-- }
 		local attached_clients_component = {
 			get_attached_clients,
 			color = {
@@ -256,7 +256,7 @@ return {
 				lualine_x = {
 					"diagnostics",
 					attached_clients_component,
-					copilot_component,
+					-- copilot_component,
 					spaces_component,
 					"filetype",
 				},
