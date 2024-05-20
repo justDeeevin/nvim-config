@@ -36,7 +36,7 @@ local web_dev_bs = { "javascript", "javascriptreact", "typescript", "typescriptr
 
 -- The LSP+copilot_active stuff is excerpt from Lunarvim
 local function get_attached_clients()
-	local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
+	local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
 	if #buf_clients == 0 then
 		return "LSP Inactive"
 	end
