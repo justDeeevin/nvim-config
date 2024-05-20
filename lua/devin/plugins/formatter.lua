@@ -22,6 +22,7 @@ return {
 			nix = { "nixpkgs_fmt" },
 			scss = { "prettierd" },
 			sh = { "beautysh" },
+			tex = { "latexindent" }
 		},
 	},
 }
