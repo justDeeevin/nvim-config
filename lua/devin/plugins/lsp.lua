@@ -161,7 +161,7 @@ return { -- LSP Configuration & Plugins
 			rust_analyzer = {
 				settings = {
 					["rust-analyzer"] = {
-						checkOnSave = { commant = "clippy" },
+						checkOnSave = { command = "clippy" },
 						inlayHints = { chainingHints = true, parameterHints = true, typeHints = true },
 						check = { allTargets = false },
 					},
