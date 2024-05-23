@@ -14,59 +14,20 @@ local runtime_cache = {
 	go = nil,
 }
 
-local spinners = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
 -- This stands for web development buffer selections i swear
 local web_dev_bs = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
 
--- local function copilot_indicator()
--- 	local client = vim.lsp.get_active_clients({ name = "copilot" })[1]
--- 	if client == nil then
--- 		return ""
--- 	end
---
--- 	if vim.tbl_isempty(client.requests) then
--- 		return ""
--- 	end
---
--- 	local ms = vim.loop.hrtime() / 1000000
--- 	local frame = math.floor(ms / 120) % #spinners
---
--- 	return spinners[frame + 1]
--- end
-
--- The LSP+copilot_active stuff is excerpt from Lunarvim
 local function get_attached_clients()
 	local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
 	if #buf_clients == 0 then
 		return "LSP Inactive"
 	end
 
-	local buf_ft = vim.bo.filetype
 	local buf_client_names = {}
 
 	-- add client
 	for _, client in pairs(buf_clients) do
-		-- Ignore copilot and the actuall null-ls LSP names
-		if client.name ~= "copilot" and client.name ~= "null-ls" then
-			table.insert(buf_client_names, client.name)
-		end
-	end
-
-	-- Generally, you should use either null-ls or nvim-lint + formatter.nvim, not both.
-	-- Add sources (from null-ls)
-	-- null-ls registers each source as a separate attached client, so we need to filter for unique names down below.
-	local null_ls_s, null_ls = pcall(require, "null-ls")
-	if null_ls_s then
-		local sources = null_ls.get_sources()
-		for _, source in ipairs(sources) do
-			if source._validated then
-				for ft_name, ft_active in pairs(source.filetypes) do
-					if ft_name == buf_ft and ft_active then
-						table.insert(buf_client_names, source.name)
-					end
-				end
-			end
-		end
+		table.insert(buf_client_names, client.name)
 	end
 
 	-- This needs to be a string only table so we can use concat below
@@ -198,13 +159,6 @@ return {
 	"nvim-lualine/lualine.nvim",
 	event = { "VimEnter", "BufReadPost", "BufNewFile" },
 	config = function()
-		-- local copilot_component = {
-		-- 	copilot_indicator,
-		-- 	color = {
-		-- 		fg = "#6CC644",
-		-- 		bg = "#1E1E1E",
-		-- 	},
-		-- }
 		local attached_clients_component = {
 			get_attached_clients,
 			color = {
@@ -214,7 +168,7 @@ return {
 
 		local spaces_component = {
 			function()
-				local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
+				local shiftwidth = vim.api.nvim_get_option_value("shiftwidth", {})
 				return "󰌒 " .. shiftwidth
 			end,
 			padding = 1,
@@ -256,7 +210,6 @@ return {
 				lualine_x = {
 					"diagnostics",
 					attached_clients_component,
-					-- copilot_component,
 					spaces_component,
 					"filetype",
 				},

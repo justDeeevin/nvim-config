@@ -2,9 +2,9 @@ return {
 	"ThePrimeAgen/harpoon",
 	branch = "harpoon2",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	opts = {},
 	config = function()
 		local harpoon = require("harpoon")
-		harpoon.setup()
 		vim.keymap.set("n", "<leader>a", function()
 			harpoon:list():add()
 		end, { desc = "Scewer current file (harpoon)" })

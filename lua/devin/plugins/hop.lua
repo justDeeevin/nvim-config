@@ -1,8 +1,8 @@
 return {
 	"phaazon/hop.nvim",
+	opts = {},
 	config = function()
 		local hop = require("hop")
-		hop.setup()
 		local directions = require("hop.hint").HintDirection
 		if os.getenv("COLEMAK") == "1" then
 			vim.keymap.set("", "<leader>i", function()

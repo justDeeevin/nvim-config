@@ -23,3 +23,5 @@ end
 vim.keymap.set("n", "<F2>", function()
 	vim.lsp.buf.rename()
 end)
+
+vim.keymap.set("n", "<leader>v", vim.diagnostic.open_float, { desc = "[V]iew diagnistics for current line" })

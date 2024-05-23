@@ -1,1 +1,1 @@
-return {'stevearc/dressing.nvim', config = function() require('dressing').setup() end}
+return { "stevearc/dressing.nvim", opts = {} }
