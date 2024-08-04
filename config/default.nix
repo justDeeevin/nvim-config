@@ -2,6 +2,5 @@
   # Import all your configuration modules here
   imports = [ ./remaps.nix ./opts.nix ] ++ builtins.map (file: ./. + "/plugins/${file}") (builtins.attrNames (builtins.readDir ./plugins));
 
-  colorschemes.tokyonight.enable = true;
-  colorschemes.tokyonight.settings.style = "night";
+  colorschemes.cyberdream.enable = true;
 }
