@@ -1,7 +1,6 @@
 {
   plugins = {
     lualine.enable = true;
-    bufferline.enable = true;
     luasnip.enable = true;
     nvim-autopairs.enable = true;
     nvim-colorizer.enable = true;
@@ -12,5 +11,9 @@
     rainbow-delimiters.enable = true;
     sleuth.enable = true;
     rustaceanvim.enable = true;
+    fidget.enable = true;
+    crates-nvim.enable = true;
+    noice.enable = true;
+    notify.enable = true;
   };
 }
