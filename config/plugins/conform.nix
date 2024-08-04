@@ -20,6 +20,7 @@
       scss = [ "prettierd" ];
       sh = [ "beautysh" ];
       tex = [ "latexindent" ];
+      rust = [ "rustfmt" ];
     };
     formatOnSave = {};
   };
