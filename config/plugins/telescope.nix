@@ -24,5 +24,9 @@
       key = "gd";
       action = "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>";
     }
+    {
+      key = "gr";
+      action = "<cmd>lua require('telescope.builtin').lsp_references()<CR>";
+    }
   ];
 }
