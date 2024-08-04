@@ -10,7 +10,6 @@
     indent-blankline.enable = true;
     rainbow-delimiters.enable = true;
     sleuth.enable = true;
-    rustaceanvim.enable = true;
     fidget.enable = true;
     crates-nvim.enable = true;
     noice.enable = true;
