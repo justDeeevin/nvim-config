@@ -1,11 +1,34 @@
-{
+{ pkgs, lib, ... }: {
   plugins.lsp = {
     enable = true;
     servers = {
-      tsserver.enable = true;
+      tsserver = {
+        enable = true;
+        filetypes = [
+          "typescript"
+          "typescriptreact"
+          "javascript"
+          "javascriptreact"
+          "vue"
+        ];
+        extraOptions = {
+          init_options = {
+            plugins = [
+              {
+                name = "@vue/typescript-plugin";
+                location = "${lib.getBin pkgs.vue-language-server}/lib/node_modules/@vue/language-server";
+                languages = [ "vue" ];
+              }
+            ];
+          };
+        };
+      };
+      volar = {
+        enable = true;
+        package = pkgs.vue-language-server;
+      };
       lua-ls.enable = true;
       nil-ls.enable = true;
-      volar.enable = true;
     };
   };
 
