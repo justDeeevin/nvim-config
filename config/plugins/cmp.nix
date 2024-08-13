@@ -12,7 +12,7 @@
       completion.completeopt = "menu, menuone";
       mapping = {
         "<CR>" = "require('cmp').mapping.confirm({select = true})";
-        "<C-@>" = ''
+        "<C-Space>" = ''
           function()
             require("cmp").mapping.complete()
           end
