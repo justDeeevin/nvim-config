@@ -41,6 +41,10 @@
       key = "<leader>th";
       action = "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<CR>";
     }
+    {
+      key = "<leader>ca";
+      action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+    }
   ];
 
   autoGroups = {
