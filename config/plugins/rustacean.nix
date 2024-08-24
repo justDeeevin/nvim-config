@@ -7,7 +7,7 @@
         parameterHints.enable = true;
         typeHints.enable = true;
       };
-      check = { allTargets = false; command = "clippy"; };
+      check = { allTargets = false; command = "clippy"; features = "all"; };
     };
   };
 }
