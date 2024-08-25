@@ -1,4 +1,4 @@
-{pkgs, ... }:
+{ pkgs, ... }:
 {
   plugins.conform-nvim = {
     enable = true;
@@ -16,13 +16,13 @@
       yaml = [ "yamlfmt" ];
       toml = [ "taplo" ];
       svelte = [ "prettierd" ];
-      nix = [ "nixpkgs_fmt" ];
+      nix = [ "alejandra" ];
       scss = [ "prettierd" ];
       sh = [ "beautysh" ];
       tex = [ "latexindent" ];
       rust = [ "rustfmt" ];
     };
-    formatOnSave = {};
+    formatOnSave = { };
   };
 
   extraPackages = with pkgs; [
@@ -31,7 +31,7 @@
     prettierd
     yamlfmt
     taplo
-    nixpkgs-fmt
+    alejandra
     beautysh
     texlivePackages.latexindent
   ];
