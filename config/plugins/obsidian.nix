@@ -11,7 +11,7 @@
       daily_notes = {
         folder = "Daily";
         template = "Templates/Daily Note Template.md";
-        date_format = "%B %-d, %Y";
+        date_format = "%b %-d, %Y";
       };
       templates.subdir = "Templates";
       disable_frontmatter = true;
