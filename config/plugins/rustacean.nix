@@ -8,6 +8,9 @@
         typeHints.enable = true;
       };
       check = { allTargets = false; command = "clippy"; features = "all"; };
+      cargo = {
+        features = "all";
+      };
     };
   };
 }
