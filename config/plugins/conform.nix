@@ -22,7 +22,9 @@
         tex = ["latexindent"];
         rust = ["rustfmt"];
       };
-      format_on_save = {};
+      format_on_save = {
+        lsp_format = "fallback";
+      };
     };
   };
 
