@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   plugins.lsp = {
     enable = true;
     servers = {
@@ -17,7 +21,7 @@
               {
                 name = "@vue/typescript-plugin";
                 location = "${lib.getBin pkgs.vue-language-server}/lib/node_modules/@vue/language-server";
-                languages = [ "vue" ];
+                languages = ["vue"];
               }
             ];
           };
@@ -44,7 +48,7 @@
     }
     {
       key = "<leader>ca";
-      action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+      action = "<cmd>lua require('actions-preview').code_actions()<CR>";
     }
   ];
 
@@ -59,14 +63,14 @@
 
   autoCmd = [
     {
-      event = [ "CursorHold" "CursorHoldI" ];
+      event = ["CursorHold" "CursorHoldI"];
       group = "lsp-highlight";
       callback = {
         __raw = "vim.lsp.buf.document_highlight";
       };
     }
     {
-      event = [ "CursorMoved" "CursorMovedI" ];
+      event = ["CursorMoved" "CursorMovedI"];
       group = "lsp-highlight";
       callback = {
         __raw = "vim.lsp.buf.clear_references";
