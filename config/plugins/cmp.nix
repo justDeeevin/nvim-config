@@ -4,9 +4,8 @@
     autoEnableSources = true;
     settings = {
       sources = [
-        { name = "nvim_lsp"; }
-        { name = "path"; }
-        { name = "luasnip"; }
+        {name = "nvim_lsp";}
+        {name = "path";}
       ];
       # This is the default with noselect removed. This change makes it select the first item automatically.
       completion.completeopt = "menu, menuone";
@@ -34,22 +33,6 @@
               fallback()
             end
           end
-        '';
-        "<C-i>" = ''
-          require("cmp").mapping(function()
-            local luasnip = require("luasnip")
-            if luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            end
-          end, {"i", "s"})
-        '';
-        "<C-m>" = ''
-          require("cmp").mapping(function()
-            local luasnip = require("luasnip")
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            end
-          end, {"i", "s"})
         '';
       };
     };
