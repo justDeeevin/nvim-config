@@ -34,6 +34,7 @@
       lua-ls.enable = true;
       nil-ls.enable = true;
       bashls.enable = true;
+      java-language-server.enable = true;
     };
   };
 
