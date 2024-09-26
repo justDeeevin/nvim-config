@@ -35,6 +35,7 @@
       nil-ls.enable = true;
       bashls.enable = true;
       jdt-language-server.enable = true;
+      jsonls.enable = true;
     };
   };
 
