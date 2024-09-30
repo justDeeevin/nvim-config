@@ -13,5 +13,6 @@
     crates-nvim.enable = true;
     noice.enable = true;
     notify.enable = true;
+    web-devicons.enable = true;
   };
 }
