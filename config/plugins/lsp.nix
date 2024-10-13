@@ -6,7 +6,7 @@
   plugins.lsp = {
     enable = true;
     servers = {
-      ts-ls = {
+      ts_ls = {
         enable = true;
         filetypes = [
           "typescript"
@@ -31,10 +31,10 @@
         enable = true;
         package = pkgs.vue-language-server;
       };
-      lua-ls.enable = true;
-      nil-ls.enable = true;
+      lua_ls.enable = true;
+      nil_ls.enable = true;
       bashls.enable = true;
-      jdt-language-server.enable = true;
+      jdtls.enable = true;
       jsonls.enable = true;
     };
   };
