@@ -36,6 +36,7 @@
       bashls.enable = true;
       jdtls.enable = true;
       jsonls.enable = true;
+      svelte.enable = true;
     };
   };
 
