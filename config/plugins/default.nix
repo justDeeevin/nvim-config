@@ -14,5 +14,6 @@
     noice.enable = true;
     notify.enable = true;
     web-devicons.enable = true;
+    presence-nvim.enable = true;
   };
 }
