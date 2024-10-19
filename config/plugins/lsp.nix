@@ -37,6 +37,7 @@
       jdtls.enable = true;
       jsonls.enable = true;
       svelte.enable = true;
+      html.enable = true;
     };
   };
 
