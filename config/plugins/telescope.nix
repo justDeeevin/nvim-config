@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   plugins.telescope = {
     enable = true;
     extensions = {
@@ -28,5 +28,9 @@
       key = "gr";
       action = "<cmd>lua require('telescope.builtin').lsp_references()<CR>";
     }
+  ];
+
+  extraPackages = with pkgs; [
+    ripgrep
   ];
 }
