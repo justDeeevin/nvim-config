@@ -54,6 +54,16 @@
       key = "<leader>ca";
       action = "<cmd>lua require('actions-preview').code_actions()<CR>";
     }
+    {
+      key = "<F2>";
+      action = "<cmd>lua vim.lsp.buf.rename()<CR>";
+      mode = "n";
+    }
+    {
+      key = "<leader>v";
+      action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+      mode = "n";
+    }
   ];
 
   autoGroups = {
