@@ -1,6 +1,5 @@
 {
   plugins = {
-    lualine.enable = true;
     nvim-autopairs.enable = true;
     nvim-colorizer.enable = true;
     dressing.enable = true;
