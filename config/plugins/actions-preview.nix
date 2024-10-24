@@ -11,4 +11,11 @@
       once = true;
     }
   ];
+
+  keymaps = [
+    {
+      key = "<leader>ca";
+      action = "<cmd>lua require('actions-preview').code_actions()<CR>";
+    }
+  ];
 }

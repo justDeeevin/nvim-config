@@ -51,10 +51,6 @@
       action = "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<CR>";
     }
     {
-      key = "<leader>ca";
-      action = "<cmd>lua require('actions-preview').code_actions()<CR>";
-    }
-    {
       key = "<F2>";
       action = "<cmd>lua vim.lsp.buf.rename()<CR>";
       mode = "n";
