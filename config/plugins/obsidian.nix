@@ -32,4 +32,11 @@
   opts = {
     conceallevel = 2;
   };
+
+  keymaps = [
+    {
+      key = "<leader>ot";
+      action = "<cmd>ObsidianToday<CR>";
+    }
+  ];
 }
