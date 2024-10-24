@@ -16,7 +16,7 @@
       templates.subdir = "Templates";
       disable_frontmatter = true;
       attachments = {
-        folder = "Assets";
+        img_folder = "Assets";
         img_name_func = {
           __raw = ''
             function()
