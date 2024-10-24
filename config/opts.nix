@@ -21,6 +21,5 @@
     scrolloff = 8;
     updatetime = 250;
     timeoutlen = 300;
-    conceallevel = 1;
   };
 }

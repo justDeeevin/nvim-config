@@ -15,6 +15,21 @@
       };
       templates.subdir = "Templates";
       disable_frontmatter = true;
+      attachments = {
+        folder = "Assets";
+        img_name_func = {
+          __raw = ''
+            function()
+              local date = os.date("*t")
+              return string.format("Pasted image %d%d%d%d%d%d", date.year, date.month, date.day, date.hour, date.min, date.sec)
+            end
+          '';
+        };
+      };
     };
+  };
+
+  opts = {
+    conceallevel = 2;
   };
 }
