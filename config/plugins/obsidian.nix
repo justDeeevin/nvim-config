@@ -25,6 +25,14 @@
             end
           '';
         };
+        img_text_func = {
+          __raw = ''
+            function(client, path)
+              path = client:vault_relative_path(path) or path
+              return string.format("![[%s]]", path.name)
+            end
+          '';
+        };
       };
     };
   };
@@ -37,6 +45,10 @@
     {
       key = "<leader>ot";
       action = "<cmd>ObsidianToday<CR>";
+    }
+    {
+      key = "<leader>op";
+      action = "<cmd>ObsidianPasteImg<CR>";
     }
   ];
 }
