@@ -21,11 +21,8 @@
         sh = ["beautysh"];
         tex = ["latexindent"];
         rust = ["rustfmt"];
-        java = {
-          lsp_format = "never";
-        };
       };
-      format_on_save = {};
+      format_on_save.timeout_ms = 1000;
     };
   };
 
