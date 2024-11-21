@@ -21,7 +21,9 @@
         sh = ["beautysh"];
         tex = ["latexindent"];
         rust = ["rustfmt"];
-        java = ["google-java-format"];
+        java = {
+          lsp_format = "never";
+        };
       };
       format_on_save = {
         lsp_format = "fallback";
