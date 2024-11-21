@@ -25,9 +25,7 @@
           lsp_format = "never";
         };
       };
-      format_on_save = {
-        lsp_format = "fallback";
-      };
+      format_on_save = {};
     };
   };
 
