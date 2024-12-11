@@ -10,7 +10,6 @@
     sleuth.enable = true;
     fidget.enable = true;
     crates-nvim.enable = true;
-    notify.enable = true;
     web-devicons.enable = true;
     presence-nvim.enable = true;
   };
